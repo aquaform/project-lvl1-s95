@@ -1,11 +1,14 @@
 import readlineSync from 'readline-sync';
 
-const welcomeUser = (gameType) => {
- if (gameType) console.log(gameDesc[gameType]);
+const gameDesc = {
+  'even': 'Answer "yes" if number even otherwise answer "no".\n'
+};
 
- const userName = readlineSync.question('May I have your name? ');
- console.log(`Hello, ${userName}!\n`);
- return `${userName}`;
+const welcomeUser = (gameType) => {
+  if (gameType) console.log(gameDesc[gameType]);
+  const userName = readlineSync.question('May I have your name? ');
+  console.log(`Hello, ${userName}!\n`);
+  return `${userName}`;
 };
 
 const startEvenGame = (userName) => {
@@ -33,8 +36,4 @@ const startEvenGame = (userName) => {
 export default (typeOfGame) => {
   const userName = welcomeUser(typeOfGame);
   if (typeOfGame=== 'even') startEvenGame(userName);
-};
-
-const gameDesc = {
-  'even': 'Answer "yes" if number even otherwise answer "no".\n'
 };
