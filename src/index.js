@@ -1,6 +1,6 @@
 import readlineSync from 'readline-sync';
 
-const gameDesc = { 'even': 'Answer "yes" if number even otherwise answer "no".\n' };
+const gameDesc = {'even': 'Answer "yes" if number even otherwise answer "no".\n' };
 
 const welcomeUser = (gameType) => {
   if (gameType) console.log(gameDesc[gameType]);
@@ -10,7 +10,10 @@ const welcomeUser = (gameType) => {
 };
 
 const startEvenGame = (userName) => {
-  const trueResult = (number) => { (number % 2) === 0 ? 'yes' : 'no'; };
+  const trueResult = (number) => {
+    const result = (number % 2) === 0 ? 'yes' : 'no';
+    return result;
+  };
   const iter = (countCorrect) => {
     if (countCorrect === 3) {
       console.log(`Congratulations, ${userName}!`);
