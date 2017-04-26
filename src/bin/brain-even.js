@@ -4,4 +4,4 @@ import startGame from '..';
 
 console.log('Welcome to the Brain Games!');
 
-startGame();
+startGame('even');
