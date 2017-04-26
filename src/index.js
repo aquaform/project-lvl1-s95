@@ -10,8 +10,7 @@ const welcomeUser = (gameType) => {
 };
 
 const startEvenGame = (userName) => {
-  const trueResult = (number) =>
-    (number % 2) === 0 ? 'yes' : 'no';
+  const trueResult = number => { return (number % 2) === 0 ? 'yes' : 'no'; };
   const iter = (countCorrect) => {
     if (countCorrect === 3) {
       console.log(`Congratulations, ${userName}!`);
@@ -23,10 +22,9 @@ const startEvenGame = (userName) => {
     if (answer === trueResult(randomNumber)) {
       console.log('Correct!');
       return iter(countCorrect + 1);
-    } else {
-      console.log(`'${answer}' is wrong answer ;(. Correct answer was '${trueResult(randomNumber)}'.`);
-      return false;
-    }
+    } 
+    console.log(`'${answer}' is wrong answer ;(. Correct answer was '${trueResult(randomNumber)}'.`);
+    return false;
   };
   const startCountCorrect = 0;
   return iter(startCountCorrect);
