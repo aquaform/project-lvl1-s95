@@ -10,9 +10,7 @@ const welcomeUser = (gameType) => {
 };
 
 const startEvenGame = (userName) => {
-  const trueResult = number => {
-    return (number % 2) === 0 ? 'yes' : 'no';
-  };
+  const trueResult = (number) => { (number % 2) === 0 ? 'yes' : 'no'; };
   const iter = (countCorrect) => {
     if (countCorrect === 3) {
       console.log(`Congratulations, ${userName}!`);
