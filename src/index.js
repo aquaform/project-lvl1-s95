@@ -1,7 +1,6 @@
 import readlineSync from 'readline-sync';
 
-const gameDesc = {
-  'even': 'Answer "yes" if number even otherwise answer "no".\n'};
+const gameDesc = { 'even': 'Answer "yes" if number even otherwise answer "no".\n' };
 
 const welcomeUser = (gameType) => {
   if (gameType) console.log(gameDesc[gameType]);
@@ -11,13 +10,13 @@ const welcomeUser = (gameType) => {
 };
 
 const startEvenGame = (userName) => {
-  const trueResult = (number) => (number % 2 === 0 ? 'yes' : 'no');
+  const trueResult = (number) => number % 2 === 0 ? 'yes' : 'no';
   const iter = (countCorrect) => {
     if (countCorrect === 3) {
       console.log(`Congratulations, ${userName}!`);
       return true;
     }
-    const randomNumber = Math.floor(Math.random()*100);
+    const randomNumber = Math.floor(Math.random() * 100);
     console.log(`Question: ${randomNumber}`);
     const answer = readlineSync.question('Your answer: ');
     if ( answer === trueResult(randomNumber)) {
@@ -34,5 +33,5 @@ const startEvenGame = (userName) => {
 
 export default (typeOfGame) => {
   const userName = welcomeUser(typeOfGame);
-  if ( typeOfGame=== 'even' ) startEvenGame(userName);
+  if (typeOfGame === 'even') startEvenGame(userName);
 };
