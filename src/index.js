@@ -1,6 +1,6 @@
 import readlineSync from 'readline-sync';
 
-const gameDesc = { 'even': 'Answer "yes" if number even otherwise answer "no".\n' };
+const gameDesc = { even: 'Answer "yes" if number even otherwise answer "no".\n' };
 
 const welcomeUser = (gameType) => {
   if (gameType) console.log(gameDesc[gameType]);
