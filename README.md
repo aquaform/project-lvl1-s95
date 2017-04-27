@@ -5,3 +5,7 @@
 [![Issue Count](https://codeclimate.com/github/aquaform/project-lvl1-s95/badges/issue_count.svg)](https://codeclimate.com/github/aquaform/project-lvl1-s95)
 
 [![Build Status](https://travis-ci.org/aquaform/project-lvl1-s95.svg?branch=master)](https://travis-ci.org/aquaform/project-lvl1-s95)
+
+# install
+
+`npm install brain-games-pvvnew -g`
