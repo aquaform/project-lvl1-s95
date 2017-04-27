@@ -13,6 +13,7 @@ const askUserName = () => {
 };
 
 export default (typeOfGame) => {
+  console.log('Welcome to the Brain Games!');
   if (typeOfGame) console.log(gameDesc[typeOfGame]);
   const userName = askUserName();
   switch (typeOfGame) {
