@@ -8,4 +8,4 @@
 
 # install
 
-`npm install brain-games-pvvnew -g`
+`npm install brain-games-newpvv -g`
