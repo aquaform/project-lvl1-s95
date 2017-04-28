@@ -1,20 +1,13 @@
 import readlineSync from 'readline-sync';
 
-const askUserName = () => {
-  const userName = readlineSync.question('\nMay I have your name? ');
-  console.log(`Hello, ${userName}!\n`);
-  return `${userName}`;
-};
-
 const startCountCorrect = 0;
 const endCountCorrect = 3;
 
-export default (generateQuestion, descGame = '') => {
+export default (generateQuestion, descGame) => {
   console.log('Welcome to the Brain Games!');
   console.log(descGame);
-  const userName = askUserName();
-
-  if (!generateQuestion) return false;
+  const userName = readlineSync.question('\nMay I have your name? ');
+  console.log(`Hello, ${userName}!\n`);
 
   const startRound = (countCorrect) => {
     if (countCorrect === endCountCorrect) {
