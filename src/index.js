@@ -1,30 +1,53 @@
 import readlineSync from 'readline-sync';
-import startEvenGame from './games/even';
-import startCalcGame from './games/calc';
+import * as evenGame from './games/even';
+import * as calcGame from './games/calc';
 
-const gameDesc = {
-  even: 'Answer "yes" if number even otherwise answer "no".\n',
-  calc: 'What is the result of the expression?\n' };
 
 const askUserName = () => {
-  const userName = readlineSync.question('May I have your name? ');
+  const userName = readlineSync.question('\nMay I have your name? ');
   console.log(`Hello, ${userName}!\n`);
   return `${userName}`;
 };
 
 export default (typeOfGame) => {
   console.log('Welcome to the Brain Games!');
-  if (typeOfGame) console.log(gameDesc[typeOfGame]);
-  const userName = askUserName();
+  let generateQuestion;
+  let descGame;
+  let getCorrectAnswer;
   switch (typeOfGame) {
     case ('even'): {
-      startEvenGame(userName);
+      descGame = evenGame.desc;
+      generateQuestion = evenGame.generateQuestion;
+      getCorrectAnswer = evenGame.getCorrectAnswer;
       break;
     }
     case ('calc'): {
-      startCalcGame(userName);
+      descGame = calcGame.desc;
+      generateQuestion = calcGame.generateQuestion;
+      getCorrectAnswer = calcGame.getCorrectAnswer;
       break;
     }
     default:
   }
+  if (typeOfGame) console.log(descGame);
+  const userName = askUserName();
+
+  const startRound = (countCorrect) => {
+    if (countCorrect === 3) {
+      console.log(`Congratulations, ${userName}!`);
+      return true;
+    }
+    const question = generateQuestion();
+    console.log(`Question: ${question[0]}`);
+    const correctAnswer = getCorrectAnswer(question);
+    const answer = readlineSync.question('Your answer: ');
+    if (answer === correctAnswer) {
+      console.log('Correct!');
+      return startRound(countCorrect + 1);
+    }
+    console.log(`'${answer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.`);
+    return false;
+  };
+  const startCountCorrect = 0;
+  if (typeOfGame) startRound(startCountCorrect);
 };
