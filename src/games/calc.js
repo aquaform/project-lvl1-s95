@@ -1,5 +1,3 @@
-import readlineSync from 'readline-sync';
-
 export const desc = 'What is the result of the expression?';
 
 export const generateQuestion = () => {
