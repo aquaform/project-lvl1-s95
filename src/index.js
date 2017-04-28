@@ -6,6 +6,9 @@ const askUserName = () => {
   return `${userName}`;
 };
 
+const startCountCorrect = 0;
+const endCountCorrect = 3;
+
 export default (generateQuestion, descGame = '') => {
   console.log('Welcome to the Brain Games!');
   console.log(descGame);
@@ -14,7 +17,7 @@ export default (generateQuestion, descGame = '') => {
   if (!generateQuestion) return false;
 
   const startRound = (countCorrect) => {
-    if (countCorrect === 3) {
+    if (countCorrect === endCountCorrect) {
       console.log(`Congratulations, ${userName}!`);
       return true;
     }
@@ -28,6 +31,6 @@ export default (generateQuestion, descGame = '') => {
     console.log(`'${answer}' is wrong answer ;(. Correct answer was '${question[1]}'.`);
     return false;
   };
-  const startCountCorrect = 0;
+
   return startRound(startCountCorrect);
 };

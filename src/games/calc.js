@@ -1,9 +1,9 @@
 import startGame from '../index';
 
 const desc = 'What is the result of the expression?';
+const operations = ['+', '-', '*'];
 
 const generateQuestion = () => {
-  const operations = ['+', '-', '*'];
   const operation = operations[Math.floor(Math.random() * 3)];
   const firstNumber = Math.floor(Math.random() * 100);
   const secondNumber = Math.floor(Math.random() * 100);
