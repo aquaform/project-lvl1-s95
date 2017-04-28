@@ -2,11 +2,10 @@ import startGame from '../index';
 
 const desc = 'Answer "yes" if number even otherwise answer "no".';
 
-const generateQuestion = () => [Math.floor(Math.random() * 100)];
-
-const getCorrectAnswer = (question) => {
+const generateQuestion = () => {
+  const question = Math.floor(Math.random() * 100);
   const result = (question % 2) === 0 ? 'yes' : 'no';
-  return result;
+  return [question, result];
 };
 
-export default () => startGame(desc, generateQuestion, getCorrectAnswer);
+export default () => startGame(generateQuestion, desc);

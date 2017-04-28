@@ -6,10 +6,12 @@ const askUserName = () => {
   return `${userName}`;
 };
 
-export default (descGame, generateQuestion, getCorrectAnswer) => {
+export default (generateQuestion, descGame = '') => {
   console.log('Welcome to the Brain Games!');
   console.log(descGame);
   const userName = askUserName();
+
+  if (!generateQuestion) return false;
 
   const startRound = (countCorrect) => {
     if (countCorrect === 3) {
@@ -18,15 +20,14 @@ export default (descGame, generateQuestion, getCorrectAnswer) => {
     }
     const question = generateQuestion();
     console.log(`Question: ${question[0]}`);
-    const correctAnswer = getCorrectAnswer(question);
     const answer = readlineSync.question('Your answer: ');
-    if (answer === correctAnswer) {
+    if (answer === question[1]) {
       console.log('Correct!');
       return startRound(countCorrect + 1);
     }
-    console.log(`'${answer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.`);
+    console.log(`'${answer}' is wrong answer ;(. Correct answer was '${question[1]}'.`);
     return false;
   };
   const startCountCorrect = 0;
-  startRound(startCountCorrect);
+  return startRound(startCountCorrect);
 };

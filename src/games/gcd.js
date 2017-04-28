@@ -5,17 +5,15 @@ const desc = 'Find the greatest common divisor of given numbers.';
 const generateQuestion = () => {
   const firstNumber = Math.floor(Math.random() * 100);
   const secondNumber = Math.floor(Math.random() * 100);
-  return [`${firstNumber} ${secondNumber}`, firstNumber, secondNumber];
-};
-
-const getCorrectAnswer = (question) => {
+  const question = `${firstNumber} ${secondNumber}`;
   const gcd = (a, b) => {
     if (b === 0) {
       return a;
     }
     return gcd(b, a % b);
   };
-  return String(gcd(question[1], question[2]));
+  const result = String(gcd(firstNumber, secondNumber));
+  return [question, result];
 };
 
-export default () => startGame(desc, generateQuestion, getCorrectAnswer);
+export default () => startGame(generateQuestion, desc);
