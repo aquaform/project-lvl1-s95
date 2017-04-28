@@ -1,6 +1,8 @@
-export const desc = 'What is the result of the expression?';
+import startGame from '../index';
 
-export const generateQuestion = () => {
+const desc = 'What is the result of the expression?';
+
+const generateQuestion = () => {
   const operations = ['+', '-', '*'];
   const operation = operations[Math.floor(Math.random() * 3)];
   const firstNumber = Math.floor(Math.random() * 100);
@@ -8,7 +10,7 @@ export const generateQuestion = () => {
   return [String(firstNumber) + operation + secondNumber, operation, firstNumber, secondNumber];
 };
 
-export const getCorrectAnswer = (question) => {
+const getCorrectAnswer = (question) => {
   let result;
   switch (question[1]) {
     case '+':
@@ -24,3 +26,5 @@ export const getCorrectAnswer = (question) => {
   }
   return String(result);
 };
+
+export default () => startGame(desc, generateQuestion, getCorrectAnswer);

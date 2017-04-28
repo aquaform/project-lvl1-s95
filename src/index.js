@@ -1,7 +1,4 @@
 import readlineSync from 'readline-sync';
-import * as evenGame from './games/even';
-import * as calcGame from './games/calc';
-
 
 const askUserName = () => {
   const userName = readlineSync.question('\nMay I have your name? ');
@@ -9,27 +6,9 @@ const askUserName = () => {
   return `${userName}`;
 };
 
-export default (typeOfGame) => {
+export default (descGame, generateQuestion, getCorrectAnswer) => {
   console.log('Welcome to the Brain Games!');
-  let generateQuestion;
-  let descGame;
-  let getCorrectAnswer;
-  switch (typeOfGame) {
-    case ('even'): {
-      descGame = evenGame.desc;
-      generateQuestion = evenGame.generateQuestion;
-      getCorrectAnswer = evenGame.getCorrectAnswer;
-      break;
-    }
-    case ('calc'): {
-      descGame = calcGame.desc;
-      generateQuestion = calcGame.generateQuestion;
-      getCorrectAnswer = calcGame.getCorrectAnswer;
-      break;
-    }
-    default:
-  }
-  if (typeOfGame) console.log(descGame);
+  console.log(descGame);
   const userName = askUserName();
 
   const startRound = (countCorrect) => {
@@ -49,5 +28,5 @@ export default (typeOfGame) => {
     return false;
   };
   const startCountCorrect = 0;
-  if (typeOfGame) startRound(startCountCorrect);
+  startRound(startCountCorrect);
 };
