@@ -14,14 +14,14 @@ export default (generateQuestion, descGame) => {
       console.log(`Congratulations, ${userName}!`);
       return true;
     }
-    const question = generateQuestion();
-    console.log(`Question: ${question[0]}`);
+    const [question, correctAnswer] = generateQuestion();
+    console.log(`Question: ${question}`);
     const answer = readlineSync.question('Your answer: ');
-    if (answer === question[1]) {
+    if (answer === correctAnswer) {
       console.log('Correct!');
       return startRound(countCorrect + 1);
     }
-    console.log(`'${answer}' is wrong answer ;(. Correct answer was '${question[1]}'.`);
+    console.log(`'${answer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.`);
     return false;
   };
 
