@@ -1,26 +1,28 @@
 import startGame from '../index';
+import getRandomNumber from '../utils';
 
 const desc = 'What number is missing in this progression?';
 const countProgression = 10;
 const maxStep = 10;
 
+const generateProgression = (current, index, step, arr) => {
+  const newArr = arr;
+  if (index === countProgression) {
+    newArr.push(current + step);
+    return newArr;
+  }
+  const newElement = current + step;
+  newArr.push(newElement);
+  return generateProgression(newElement, index + 1, step, newArr);
+};
+
+
 const generateQuestion = () => {
-  const startProgression = Math.floor(Math.random() * 100);
-  const stepProgression = Math.floor(1 + (Math.random() * maxStep));
-  const indexOfHiddenElement = Math.floor(Math.random() * countProgression);
+  const startProgression = getRandomNumber(0, 100);
+  const stepProgression = getRandomNumber(1, maxStep);
+  const indexOfHiddenElement = getRandomNumber(1, countProgression);
 
-  const generateProgression = (current, index, arr) => {
-    const newArr = arr;
-    if (index === countProgression) {
-      newArr.push(current + stepProgression);
-      return newArr;
-    }
-    const newElement = current + stepProgression;
-    newArr.push(newElement);
-    return generateProgression(newElement, index + 1, newArr);
-  };
-
-  const progression = generateProgression(startProgression, 1, []);
+  const progression = generateProgression(startProgression, 1, stepProgression, []);
   const correctAnswer = String(progression[indexOfHiddenElement - 1]);
   progression[indexOfHiddenElement - 1] = '..';
 
